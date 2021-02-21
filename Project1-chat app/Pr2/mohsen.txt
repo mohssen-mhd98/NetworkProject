@@ -1,0 +1,24 @@
+Hi
+I'm mohsen.
+I am so funny.
+filetodown = open("20201201_103215.jpg", "wb")
+    while True:
+        print("Receiving....")
+        data = s.recv(1024)
+        if data == b"DONE":
+            print("Done Receiving.")
+            break
+        filetodown.write(data)
+    filetodown.close()
+
+
+    filetosend = open("20201201_103215.jpg", "rb")
+    data = filetosend.read(1024)
+    while data:
+        print("Sending...")
+        conn.send(data)
+        data = filetosend.read(1024)
+    filetosend.close()
+    conn.send(b"DONE")
+    print("Done Sending.")
+    print(conn.recv(1024))
